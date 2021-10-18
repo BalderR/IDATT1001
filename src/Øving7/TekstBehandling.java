@@ -12,10 +12,6 @@ public class TekstBehandling {
 
 
 
-    public String gettext(){
-        return text;
-    }
-
     public int totalwords(){
 
         String[] test = text.split("\\s+");

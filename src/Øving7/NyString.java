@@ -10,10 +10,6 @@ public class NyString {
 
     }
 
-    public String gettext() {
-        return text;
-
-    }
 
     public NyString abbreviate() {
 
