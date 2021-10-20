@@ -26,8 +26,8 @@ public class Employee {
         return monthlySalary - extra;
     }
 
-    public double grossMonthlysalary() {
-        return monthlySalary * taxFactor;
+    public double grossYearlysalary() {
+        return monthlySalary * 12;
     }
 
     public double yearlyTaxation() {
@@ -61,10 +61,7 @@ public class Employee {
         GregorianCalendar calendar = new GregorianCalendar();
         int year = calendar.get(Calendar.YEAR);
         int yearsEmployed = year - yearOfemployment;
-        boolean moreThan = false;
-        if (yearsEmployed >= years) {
-            moreThan = true;
-        }
+        boolean moreThan = yearsEmployed >= years;
         return moreThan;
     }
 
