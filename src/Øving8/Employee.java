@@ -10,7 +10,14 @@ public class Employee {
     private double monthlySalary;
     private double taxFactor;
 
-
+    /**
+     *
+     * @param personalDetails person objektvariabelet
+     * @param employeeNr ansattnr
+     * @param yearOfemployment ansatt år
+     * @param monthlySalary måndeslønn
+     * @param taxFactor skatteprosent
+     */
     public Employee(Person personalDetails, int employeeNr,
                     int yearOfemployment, double monthlySalary, double taxFactor) {
         this.personalDetails = new Person(personalDetails.getFirstName(), personalDetails.getSurName(),
@@ -92,5 +99,16 @@ public class Employee {
 
     public void setTaxFactor(double newValue) {
         taxFactor = newValue;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "personalDetails=" + personalDetails +
+                ", employeeNr=" + employeeNr +
+                ", yearOfemployment=" + yearOfemployment +
+                ", monthlySalary=" + monthlySalary +
+                ", taxFactor=" + taxFactor +
+                '}';
     }
 }

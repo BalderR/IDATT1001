@@ -7,6 +7,12 @@ public class Person {
     private final String surName;
     private final int bYear;
 
+    /**
+     *
+     * @param firstName fornavn
+     * @param surName etternavn
+     * @param bYear fødseslår
+     */
 
     public Person(String firstName, String surName, int bYear) {
         this.firstName = firstName;
@@ -27,6 +33,6 @@ public class Person {
     }
 
     public String toString() {
-        return "Navn: " + firstName + surName + "Fødeselsdato: " + bYear;
+        return "Navn: " + firstName + " " + surName + "Fødeselsdato: " + bYear;
     }
 }
