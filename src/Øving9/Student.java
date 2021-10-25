@@ -6,7 +6,7 @@ public class Student {
 
     public Student(String navn, int antOppg) {
        this.navn = navn;
-       this.antOppg = 0;
+       this.antOppg = antOppg;
 
     }
 
