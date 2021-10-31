@@ -1,82 +1,125 @@
 package Øving9;
 
-import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Oppgaveoversikt {
-    private Student[] studenter;
-    private int antStud = 0;
+    private List<Student> studenter;
+    private int antallStud;
 
-    public Oppgaveoversikt(Student[] studenter, int antStud) {
-        this.studenter = new Student[antStud];
-        this.antStud = antStud;
+    /**
+     *
+     * @param studenter ny linkedlist
+     */
+    public Oppgaveoversikt(List<Student> studenter) {
+        this.studenter = new LinkedList<>(studenter);
+        antallStud=studenter.size();
     }
 
-    public int getAntoppgaver(String navn1) {
-        for (int i = 0; i < antStud; i++) {
-            if (studenter[i].getNavn().equals(navn1)) ;
-            return studenter[i].getAntOppg();
+    /**
+     *
+     * @param navn1 navn på student
+     * @return returnerer antall oppgaver løst
+     */
+    public int finnOppgLost(String navn1) {
+        if (navn1 == null) {
+            return -1;
+        }
+        Student stud = queryStudent(navn1);
+        int pos = finnStudent(stud.getNavn());
+        return this.studenter.get(pos).getAntOppg();
+    }
+
+    /**
+     *
+     * @param stud student
+     * @return returnerer plasseringen i linkedlist
+     */
+    public int finnStudent(Student stud) {
+        return this.studenter.indexOf(stud);
+    }
+
+    /**
+     *
+     * @param navn navn på student
+     * @return returnerer plassering til student som matcher navn
+     */
+    private int finnStudent(String navn) {
+        for(int i=0; i<this.studenter.size(); i++) {
+            if(studenter.get(i).getNavn().equals(navn)) {
+                return i;
+            }
         }
         return -1;
     }
 
-    public void registrerStudent(String navn, int antOppg) {
-        //Student[] studenter1 = Arrays.copyOf(studenter, antStud + 1);
-        //studenter1[antStud + 1] = new Student(navn, antOppg);
-        //antStud ++;
-
-
-        //Student[] studenter1 = new Student[antStud + 1];
-        //for (int i = 0; i < antStud; i++) {
-           // studenter1[i] = new Student(studenter[i].getNavn(), studenter[i].getAntOppg());
-       // }
-        //studenter1[antStud + 1] = new Student(navn, antOppg);
-        //antStud++;
-
-        if (antStud == 0) {
-            studenter = new Student[1];
-            studenter[0] = new Student(navn, antOppg);
-            antStud++;
-        } else if (antStud != 0) {
-            Student[] studenter1 = new Student[antStud + 1];
-            for (int i = 0; i < antStud; i++) {
-                studenter1[i] = new Student(studenter[i].getNavn(), studenter[i].getAntOppg());
-            }
-            studenter1[antStud] = new Student(navn, antOppg);
-            antStud++;
-            System.out.println(antStud);
-        }
-    }
-
-    public void okAntalloppg(String navn2, int antall) {
-        for (int i = 0; i < antStud; i++) {
-            if (studenter[i].getNavn().equals(navn2)) {
-                studenter[i].okAntOppg(antall);
-            }
-        }
-    }
-
-    public int getAntStud() {
-        return antStud;
-    }
-
-    public String toString() {
-        String name = "";
-        for (int i = 0; i < studenter.length; i++) {
-            name += studenter[i] + ". ";
-        }
-        return name;
-    }
-}
-
-
-    /*
-    @Override
-    public String toString() {
-        return "Oppgaveoversikt{" +
-                "studenter=" + Arrays.toString(studenter) +
-                ", antStud=" + antStud +
-                '}';
-    }
-
+    /**
+     *
+     * @param s student
+     * @return legger til student, og blir true
      */
+    public boolean registrerNyStudent(Student s) {
+        return this.studenter.add(s);
+    }
 
+    /**
+     *
+     * @return returnerer størrelse på studenter
+     */
+    public int antRegStud() {
+        return this.studenter.size();
+    }
+
+    /**
+     *
+     * @param s student
+     * @param antall øk med antall
+     * @return øker antall oppgaver
+     */
+    public boolean okAntallOppgaver(Student s, int antall) {
+        if (s == null || antall < 0) {
+            return false;
+        }
+        this.studenter.get(finnStudent(s)).okAntOppg(antall);
+        return true;
+    }
+
+    /**
+     *
+     * @param navn navn på student
+     * @param antall øk med antall
+     * @return bruker metode over for å øke antall oppgaver
+     */
+    public boolean okAntallOppgaver(String navn, int antall) {
+        Student s = queryStudent(navn);
+        //System.out.println("Linje 59 " + s);
+        return okAntallOppgaver(s, antall);
+    }
+
+    /**
+     *
+     * @param navn navn på student
+     * @return returnerer studentobjektet som matcher navn
+     */
+    public Student queryStudent(String navn) {
+        int pos = finnStudent(navn);
+        if(pos >= 0) {
+            return this.studenter.get(pos);
+        }
+
+        return null;
+    }
+
+    /**
+     *
+     * @return skriver ut hver student og antall utførte oppgaver
+     */
+    public String toString() {
+        StringBuilder str = new StringBuilder(this.studenter.size());
+        for (Student i : this.studenter) {
+            str.append(i.getNavn() + ", " + i.getAntOppg() + "\n");
+        }
+        return str.toString();
+    }
+
+}

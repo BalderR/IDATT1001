@@ -4,10 +4,9 @@ public class Student {
     private String navn;
     private int antOppg;
 
-    public Student(String navn, int antOppg) {
+    public Student(String navn) {
        this.navn = navn;
-       this.antOppg = antOppg;
-
+       this.antOppg = 0;
     }
 
     public String getNavn() {

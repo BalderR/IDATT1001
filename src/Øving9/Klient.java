@@ -1,61 +1,72 @@
 package Øving9;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Klient {
 
-    public static void main(String[] args) {
-        int antStud = 0;
-        Student[] studenter = new Student[antStud];
-        Scanner in = new Scanner(System.in);
-        Oppgaveoversikt skole = new Oppgaveoversikt(studenter, antStud);
+    private static Student Andreas = new Student("Thomas");
+    private static Student Jonatan = new Student("Jonathan");
+    private static Student Stian = new Student("Mads");
+    private static List<Student> studenter = new LinkedList<>();
 
-        while (true) {
-            System.out.print("1: Registrer ny student\n");
-            System.out.print("2: Vis antall godkjent oppgaver til student\n");
-            System.out.print("3: Øk antall oppgaver til student\n");
-            System.out.print("4: Vis antall studenter\n");
-            System.out.print("0: Avslutt program\n");
 
-            int menyvalg = in.nextInt();
+    private static Scanner s = new Scanner(System.in);
+    public static void main(String [] args) {
 
-            if (menyvalg == 1) {
-                System.out.print("Skriv inn navn");
-                String navn = in.nextLine();
-                in.nextLine();
-                System.out.print("Skriv inn antall oppgaver godkjent");
-                int antOppg = in.nextInt();
-                in.nextLine();
-                skole.registrerStudent(navn, antOppg);
+        studenter.add(Andreas);
+        studenter.add(Jonatan);
+        studenter.add(Stian);
 
-            } else if (menyvalg == 2) {
-                System.out.print("Skriv inn studentens navn");
-                String valg = in.nextLine();
-                in.nextLine();
-                System.out.println(skole.getAntoppgaver(valg));
-
-            } else if (menyvalg == 3) {
-                System.out.print("Skriv inn studentens navn");
-                String valg = in.nextLine();
-                in.nextLine();
-                System.out.print("Øke med antall oppgaver: ");
-                int valg2 = in.nextInt();
-                in.nextLine();
-
-                skole.okAntalloppg(valg, valg2);
-
-            } else if (menyvalg == 4) {
-                System.out.print("Antall studenter:");
-                System.out.print(skole);
-
-            } else if (menyvalg == 0) {
-                System.out.println("Avslutter...");
-                System.exit(0);
-            } else {
-                System.out.print("Du skrev inn noe feil");
+        Oppgaveoversikt studReg = new Oppgaveoversikt(studenter);
+        while(true) {
+            System.out.println("Du kan velge mellom: \n" +
+                    "0. Avslutt \n" +
+                    "1. Finn antall studenter registert\n" +
+                    "2. Finn antall oppgaver løst av student x \n" +
+                    "3. Registrere en ny student\n" +
+                    "4. �k antall oppgave lost for student x\n" +
+                    "5. Print all info");
+            int valg = s.nextInt();
+            switch(valg) {
+                case 0:
+                    System.out.println("Avslutter....");
+                    System.exit(0);
+                case 1:
+                    System.out.println("Antall studenter registrert er: " + studReg.antRegStud());
+                    break;
+                case 2:
+                    System.out.println("Antall oppgaver løst av student x ");
+                    s.nextLine();
+                    String name = s.nextLine();
+                    System.out.println("Antall oppgaver løst av "+ name + ": " + studReg.finnOppgLost(name) + "\n");
+                    break;
+                case 3:
+                    System.out.println("Registrer en ny student\n");
+                    System.out.println("Navn på den nye studenten");
+                    s.nextLine();
+                    String navn = s.nextLine();
+                    Student nyStud = new Student(navn);
+                    System.out.println("Registrerer en " +  nyStud.getNavn() + ": " + studReg.registrerNyStudent(nyStud) + "\n");
+                    break;
+                case 4:
+                    System.out.println("øk antall oppgaver løst for student x");
+                    s.nextLine();
+                    name = s.nextLine();
+                    System.out.println("Hvor mange oppgaver vil du øke med? \n");
+                    int antall = s.nextInt();
+                    studReg.okAntallOppgaver(name, antall);
+                    break;
+                case 5:
+                    System.out.println(studReg);
+                    break;
+                default:
+                    System.out.println("Du skrev noe feil, prøv på nytt. \n");
+                    continue;
             }
-
 
         }
     }
-}
+
+    }
