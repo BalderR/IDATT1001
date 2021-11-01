@@ -1,5 +1,6 @@
 package Øving9;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -9,10 +10,10 @@ public class Oppgaveoversikt {
 
     /**
      *
-     * @param studenter ny linkedlist
+     * @param studenter ny arraylist
      */
     public Oppgaveoversikt(List<Student> studenter) {
-        this.studenter = new LinkedList<>(studenter);
+        this.studenter = new ArrayList<>(studenter);
         antallStud=studenter.size();
     }
 
@@ -59,7 +60,11 @@ public class Oppgaveoversikt {
      * @return legger til student, og blir true
      */
     public boolean registrerNyStudent(Student s) {
-        return this.studenter.add(s);
+        if (!this.studenter.contains(s)) {
+            this.studenter.add(s);
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -92,7 +97,6 @@ public class Oppgaveoversikt {
      */
     public boolean okAntallOppgaver(String navn, int antall) {
         Student s = queryStudent(navn);
-        //System.out.println("Linje 59 " + s);
         return okAntallOppgaver(s, antall);
     }
 
@@ -117,7 +121,7 @@ public class Oppgaveoversikt {
     public String toString() {
         StringBuilder str = new StringBuilder(this.studenter.size());
         for (Student i : this.studenter) {
-            str.append(i.getNavn() + ", " + i.getAntOppg() + "\n");
+            str.append(i.getNavn()).append(", ").append(i.getAntOppg()).append("\n");
         }
         return str.toString();
     }

@@ -1,5 +1,6 @@
 package Øving9;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
@@ -7,9 +8,9 @@ import java.util.Scanner;
 public class Klient {
 
     private static Student Andreas = new Student("Thomas");
-    private static Student Jonatan = new Student("Jonathan");
-    private static Student Stian = new Student("Mads");
-    private static List<Student> studenter = new LinkedList<>();
+    private static Student Jonatan = new Student("Jonatan");
+    private static Student Stian = new Student("Stian");
+    private static List<Student> studenter = new ArrayList<>();
 
 
     private static Scanner s = new Scanner(System.in);
@@ -26,7 +27,7 @@ public class Klient {
                     "1. Finn antall studenter registert\n" +
                     "2. Finn antall oppgaver løst av student x \n" +
                     "3. Registrere en ny student\n" +
-                    "4. �k antall oppgave lost for student x\n" +
+                    "4. Øk antall oppgave lost for student x\n" +
                     "5. Print all info");
             int valg = s.nextInt();
             switch(valg) {
