@@ -15,13 +15,14 @@ public class ArrangementRegister {
     }
 
     public void nyttArrangement(Arrangement a) {
-        for (Arrangement arr : arrangementer) {
-            if (arr.getNummer() != a.getNummer()) {
-                arrangementer.add(a);
-            } else {
-                System.out.println("Det finnes allerede et arrangement med dette nummer");
-            }
-        }
+        //for (Arrangement arr : arrangementer) {
+            //if (arr.getNummer() == a.getNummer()) {
+              //  System.out.println("Det finnes allerede et arrangement med dette nummer");
+           // } else {
+               // arrangementer.add(a);
+           // }
+        //}
+        arrangementer.add(a);
     }
 
     public ArrayList<Arrangement> finnArrangementsted(String sted) {
@@ -73,11 +74,12 @@ public class ArrangementRegister {
         return arrKopi;
     }
 
+    @Override
     public String toString() {
         StringBuilder str = new StringBuilder(arrangementer.size());
         for (Arrangement arr : arrangementer) {
-            str.append(arr.getNummer()).append("\n").append(arr.getNavn()).append(", \n").append(arr.getSted()).append("\n").append(arr.getTidspunkt())
-                    .append("\n").append(arr.getType()).append("\n").append(arr.getArrangor()).append("\n");
+            str.append(arr.getNummer()).append("\n").append(arr.getNavn()).append("\n").append(arr.getSted()).append("\n")
+                    .append(arr.getTidspunkt()).append("\n").append(arr.getType()).append("\n").append(arr.getArrangor()).append("\n");
         }
         return str.toString();
     }

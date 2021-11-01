@@ -43,4 +43,16 @@ public class Arrangement {
     public long getTidspunkt() {
         return tidspunkt;
     }
+
+    @Override
+    public String toString() {
+        return "\nArrangement \n{" +
+                "nummer=" + nummer +
+                ", \nnavn='" + navn + '\'' +
+                ", \nsted='" + sted + '\'' +
+                ", \narrangor='" + arrangor + '\'' +
+                ", \ntype='" + type + '\'' +
+                ", \ntidspunkt=" + tidspunkt +
+                '}';
+    }
 }
