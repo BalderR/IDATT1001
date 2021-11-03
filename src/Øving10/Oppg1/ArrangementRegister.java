@@ -1,11 +1,10 @@
-package Øving10;
+package Øving10.Oppg1;
 
 
-import Øving9.Student;
+import Øving10.Oppg1.Arrangement;
 
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.Iterator;
 
 public class ArrangementRegister {
     private ArrayList<Arrangement> arrangementer;

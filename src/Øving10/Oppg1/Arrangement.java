@@ -1,4 +1,4 @@
-package Øving10;
+package Øving10.Oppg1;
 
 //entydig nummer, navn, sted, arrangør, type (konsert, barneteater, foredrag osv)
 //og tidspunkt (dato og klokkeslett)
