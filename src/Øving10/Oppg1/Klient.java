@@ -1,7 +1,7 @@
-package Øving10;
+package Øving10.Oppg1;
 
-import Øving9.Oppgaveoversikt;
-import Øving9.Student;
+import Øving10.Oppg1.Arrangement;
+import Øving10.Oppg1.ArrangementRegister;
 
 import java.util.ArrayList;
 import java.util.Scanner;
