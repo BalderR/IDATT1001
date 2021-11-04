@@ -55,13 +55,13 @@ public class Klient {
                     System.out.println("Skriv inn sted");
                     String sted2 = s.nextLine();
                     System.out.println("Skriv inn arrangør");
-                    String arrangør = s.nextLine();
+                    String arrangor = s.nextLine();
                     System.out.println("Skriv inn type arrangement");
                     String type = s.nextLine();
                     System.out.println("Skriv inn tidspunkt");
                     long tidspunkt = s.nextLong();
                     s.nextLine();
-                    Arrangement nyttArrangement = new Arrangement(nummer, navn, sted2, arrangør, type, tidspunkt);
+                    Arrangement nyttArrangement = new Arrangement(nummer, navn, sted2, arrangor, type, tidspunkt);
                     Trondheimkommune.nyttArrangement(nyttArrangement);
                     System.out.println("Nytt arrangement: \n" + nyttArrangement);
                     break;
