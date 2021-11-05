@@ -29,12 +29,23 @@ public class Meny {
         return rett1;
     }
 
+    public Rett finnRettype1(String type) {
+        for (Rett rett : retter) {
+            if (rett.getType().equalsIgnoreCase(type)) {
+                return new Rett(rett.getNavn(), rett.getType(), rett.getOppskrift(), rett.getPris());
+            }
+        }
+        return null;
+    }
+
     public Meny getMeny() {
-        this.retter= new ArrayList<Rett>(retter);
+        //this.retter= new ArrayList<>(retter);
         return new Meny(nummer, retter, totalpris);
     }
 
     public int getNummer() {
         return nummer;
     }
+
+    public int getTotalpris() {return totalpris;}
 }

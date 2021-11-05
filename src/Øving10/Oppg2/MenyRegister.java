@@ -1,5 +1,6 @@
 package Øving10.Oppg2;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class MenyRegister {
@@ -19,12 +20,34 @@ public class MenyRegister {
         }
     }
 
-    public Rett finnRett(String navn) {
+    public Rett finnRettnavn(String navn) {
         Rett rett = null;
         for (Meny m : menyer) {
             rett = m.finnRettnavn(navn);
         }
         return rett;
+    }
+
+    public ArrayList<Rett> finnRettype(String type) {
+        ArrayList<Rett> rettype = new ArrayList<>();
+        for (Meny m : menyer) {
+            rettype.add(m.finnRettype1(type));
+        }
+        return rettype;
+    }
+
+    public void nyMeny() {
+
+    }
+
+    public MenyRegister finnMeny(int start, int slutt) {
+        ArrayList<Meny> menyPris= new ArrayList<>();
+        for (Meny m : menyer) {
+            if (m.getTotalpris() >= start && m.getTotalpris() <= slutt) {
+                menyPris.add(m);
+            }
+        }
+        return new MenyRegister(menyPris);
     }
 
 
