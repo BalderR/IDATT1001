@@ -10,9 +10,9 @@ public class MenyRegister {
         this.menyer = menyer;
     }
 
-    public void nyRett(Rett r, int valg) {
+    public void nyRett(Rett r, int nummer) {
         for (Meny m : menyer) {
-            if (m.getNummer() == valg) {
+            if (m.getNummer() == nummer) {
                 m.leggTilrett(r);
             }else{
                 System.out.println("Menyen finnes ikke");
@@ -31,16 +31,24 @@ public class MenyRegister {
     public ArrayList<Rett> finnRettype(String type) {
         ArrayList<Rett> rettype = new ArrayList<>();
         for (Meny m : menyer) {
-            rettype.add(m.finnRettype1(type));
+            rettype.add(m.finnRettype(type));
         }
         return rettype;
     }
 
-    public void nyMeny() {
+    public void nyMeny(Meny m) { //sjekk olros main, det meste gjøres der
+        this.menyer.add(m);
 
     }
 
-    public MenyRegister finnMeny(int start, int slutt) {
+    public Meny finnAlleretter() {
+        ArrayList<Rett> alleRetter = new ArrayList<>();
+        for (Meny m : menyer) {
+            alleRetter.add(m.finnRett());
+        }
+        return new Meny(alleRetter);
+    }
+    public MenyRegister finnMenyerpris(int start, int slutt) {
         ArrayList<Meny> menyPris= new ArrayList<>();
         for (Meny m : menyer) {
             if (m.getTotalpris() >= start && m.getTotalpris() <= slutt) {
@@ -49,6 +57,8 @@ public class MenyRegister {
         }
         return new MenyRegister(menyPris);
     }
+
+
 
 
 

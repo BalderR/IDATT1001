@@ -15,6 +15,10 @@ public class Meny {
             this.totalpris += rett.getPris();
     }
 
+    public Meny(ArrayList<Rett> retter) { //konstruktør for public Meny finnAlleretter
+        this.retter = retter;
+    }
+
     public void leggTilrett(Rett r) {
         retter.add(r);
     }
@@ -29,7 +33,7 @@ public class Meny {
         return rett1;
     }
 
-    public Rett finnRettype1(String type) {
+    public Rett finnRettype(String type) {
         for (Rett rett : retter) {
             if (rett.getType().equalsIgnoreCase(type)) {
                 return new Rett(rett.getNavn(), rett.getType(), rett.getOppskrift(), rett.getPris());
@@ -38,10 +42,19 @@ public class Meny {
         return null;
     }
 
+    public Rett finnRett() {
+        for (Rett r : retter) {
+            return new Rett(r.getNavn(), r.getType(), r.getOppskrift(), r.getPris());
+        }
+        return null;
+    }
+
     public Meny getMeny() {
         //this.retter= new ArrayList<>(retter);
         return new Meny(nummer, retter, totalpris);
     }
+
+
 
     public int getNummer() {
         return nummer;
