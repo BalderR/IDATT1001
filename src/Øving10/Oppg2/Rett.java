@@ -1,12 +1,22 @@
 package Øving10.Oppg2;
 
+/**
+ * Klasse som inneholder retter
+ */
 public class Rett {
     private final String navn;
     private String type;
     private String oppskrift;
-    private int pris;
+    private double pris;
 
-    public Rett(String navn, String type, String oppskrift, int pris) {
+    /**
+     *
+     * @param navn navn
+     * @param type type
+     * @param oppskrift oppskrift
+     * @param pris pris
+     */
+    public Rett(String navn, String type, String oppskrift, double pris) {
         this.navn = navn;
         this.type = type;
         this.pris = pris;
@@ -21,7 +31,7 @@ public class Rett {
         return type;
     }
 
-    public int getPris() {
+    public double getPris() {
         return pris;
     }
 
@@ -31,7 +41,7 @@ public class Rett {
 
     @Override
     public String toString() {
-        return "Rett: " + navn + "Type : " + type + "Pris: " + pris + "Oppskrift: " + oppskrift;
+        return "Rett: " + navn + "\n Type : " + type + "\n Pris: " + pris + "\n Oppskrift: " + oppskrift + "\n";
     }
 }
 
