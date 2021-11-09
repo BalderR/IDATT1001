@@ -1,7 +1,8 @@
 package Øving10.Oppg1;
 
-//entydig nummer, navn, sted, arrangør, type (konsert, barneteater, foredrag osv)
-//og tidspunkt (dato og klokkeslett)
+/**
+ * klasse som inneholder arrangementer
+ */
 
 public class Arrangement {
     private final int nummer;
@@ -11,6 +12,15 @@ public class Arrangement {
     private String type;
     private long tidspunkt;
 
+    /**
+     *
+     * @param nummer nummer på arrangement
+     * @param navn navn
+     * @param sted sted
+     * @param arrangør arrangør av arrangement
+     * @param type type arrangement
+     * @param tidspunkt tidspunkt
+     */
     public Arrangement(int nummer, String navn, String sted, String arrangør, String type, long tidspunkt) {
         this.nummer = nummer;
         this.navn = navn;
@@ -43,6 +53,17 @@ public class Arrangement {
     public long getTidspunkt() {
         return tidspunkt;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Arrangement that = (Arrangement) o;
+        return nummer == that.nummer;
+    }
+
+
+
 
     @Override
     public String toString() {

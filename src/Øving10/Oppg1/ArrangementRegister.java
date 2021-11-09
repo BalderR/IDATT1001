@@ -6,13 +6,24 @@ import Øving10.Oppg1.Arrangement;
 import java.util.ArrayList;
 import java.util.Comparator;
 
+/**
+ * Klasse som består av et register av arrangementer
+ */
 public class ArrangementRegister {
     private ArrayList<Arrangement> arrangementer;
 
+    /**
+     *
+     * @param arrangementer arraylist av arrangementer
+     */
     public ArrangementRegister(ArrayList<Arrangement> arrangementer) {
         this.arrangementer = arrangementer;
     }
 
+    /**
+     *
+     * @param a arrangement a
+     */
     public void nyttArrangement(Arrangement a) {
         //for (Arrangement arr : arrangementer) {
             //if (arr.getNummer() == a.getNummer()) {
@@ -21,9 +32,17 @@ public class ArrangementRegister {
                // arrangementer.add(a);
            // }
         //}
+        if(arrangementer.contains(a)) {
+            throw new IllegalArgumentException("Arrangement finnes allerede");
+        }
         arrangementer.add(a);
     }
 
+    /**
+     *
+     * @param sted sted fra bruker
+     * @return returnerer arraylist med arrangementene som matcher sted
+     */
     public ArrayList<Arrangement> finnArrangementsted(String sted) {
         ArrayList<Arrangement> arrSted = new ArrayList<>();
         for (Arrangement arr : arrangementer) {
@@ -35,6 +54,11 @@ public class ArrangementRegister {
     }
 
 
+    /**
+     *
+     * @param dato dato fra bruker
+     * @return returnerer arraylist av arrangement som matcher dato
+     */
     public ArrayList<Arrangement> finnArrangementdato(long dato) {
         ArrayList<Arrangement> arrDato = new ArrayList<>();
         for (Arrangement arr : arrangementer) {
@@ -45,6 +69,12 @@ public class ArrangementRegister {
         return arrDato;
     }
 
+    /**
+     *
+     * @param startDato tidligste dato fra bruker
+     * @param sluttDato seneste dato fra bruker
+     * @return returnerer arraylist av arrangementer som matcher med dato
+     */
     public ArrayList<Arrangement> finnArrangement(long startDato, long sluttDato) {
         ArrayList<Arrangement> arrIntervall = new ArrayList<>();
         for (Arrangement arr : arrangementer) {
@@ -59,6 +89,11 @@ public class ArrangementRegister {
     }
 
 
+    /**
+     *
+     * @param a valg av sortering fra bruker
+     * @return Returnerer arraylist sortert på det som bruker valgte
+     */
     public ArrayList<Arrangement> sorterArrangement(int a) {
         ArrayList<Arrangement> arrKopi = new ArrayList<>(arrangementer);
         if (a == 1) {
@@ -70,6 +105,7 @@ public class ArrangementRegister {
         } else {
             System.out.println("Du skrev noe feil");
         }
+        //Kunne brukt arrKopi.sort(Comparator.comparing(Arrangement::getSted.thenComparing(getType).thenComparing(getTidspunkt)))
         return arrKopi;
     }
 
@@ -83,14 +119,4 @@ public class ArrangementRegister {
         return str.toString();
     }
 }
-
-    /*
-    @Override
-    public String toString() {
-        return "ArrangementRegister{" +
-                "arrangementer=" + arrangementer +
-                '}';
-    }
-}
-*/
 

@@ -51,8 +51,8 @@ public class MenyRegister {
      * @param type type fra bruker
      * @return Returnerer retter som matcher type fra bruker
      */
-    public ArrayList<ArrayList> finnRettype(String type) {
-        ArrayList<ArrayList> rettype = new ArrayList<>();
+    public ArrayList<ArrayList<Rett>> finnRettype(String type) {
+        ArrayList<ArrayList<Rett>> rettype = new ArrayList<>();
         for (Meny m : menyer) {
             rettype.add(m.finnRettype(type));
         }
@@ -72,8 +72,8 @@ public class MenyRegister {
      *
      * @return returnerer alle retter fra alle menyer som menyregisteret består av
      */
-    public ArrayList<ArrayList> finnAlleretter() {
-        ArrayList<ArrayList> alleRetter = new ArrayList<>();
+    public ArrayList<ArrayList<Rett>> finnAlleretter() {
+        ArrayList<ArrayList<Rett>> alleRetter = new ArrayList<>();
         for (Meny m : menyer) {
             alleRetter.add(m.finnRett());
         }
