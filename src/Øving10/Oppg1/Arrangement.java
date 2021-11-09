@@ -54,6 +54,7 @@ public class Arrangement {
         return tidspunkt;
     }
 
+    //.contains bruker denne. Automatisk intelliJ
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
