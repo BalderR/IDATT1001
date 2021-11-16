@@ -38,7 +38,6 @@ public class NyStringMain {
                     String letter = input.nextLine();
                     NyString letter1 = new NyString(letter);
                     System.out.println(text1.remove(letter));
-
                 }
 
             }

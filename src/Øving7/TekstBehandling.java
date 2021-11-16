@@ -5,19 +5,15 @@ public class TekstBehandling {
     private String letter;
     private String letter2;
 
-
     public TekstBehandling(String text){
         this.text = text;
     }
-
-
 
     public int totalwords(){
 
         String[] test = text.split("\\s+");
 
         return test.length;
-
     }
 
     public double averageWordlength(){
@@ -26,10 +22,7 @@ public class TekstBehandling {
         int count = 0;
         double sum = 0;
 
-
-
         String[] words = test.split("\\s+");
-
 
         for (String word : words) {
             double wordLength = word.length();
@@ -37,20 +30,16 @@ public class TekstBehandling {
             count++;
         }
 
-
         double average = 0;
         if (count > 0) {
             average = sum / count;
         }
-
-
         return (average);
     }
 
     public double averageWordperPeriod(){
         String text = this.text;
         String[] test = text.split("\\s+");
-
         int totalwords= test.length;
 
         String[] periods = text.split("[.!:?]+");
@@ -58,7 +47,6 @@ public class TekstBehandling {
         int average = totalwords / periods.length;
 
         return (average);
-
     }
 
     public TekstBehandling replaceWord(String letter, String letter2){
@@ -69,10 +57,6 @@ public class TekstBehandling {
         String newText = test.replaceAll(test2,test3);
 
         return new TekstBehandling(newText);
-
-
-
-
     }
 
     public TekstBehandling retrieveText(){
@@ -87,7 +71,6 @@ public class TekstBehandling {
         String newText = test.toUpperCase();
 
         return new TekstBehandling(newText);
-
     }
     @Override
     public String toString() {

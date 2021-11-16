@@ -13,7 +13,6 @@ public class Person {
      * @param surName etternavn
      * @param bYear fødseslår
      */
-
     public Person(String firstName, String surName, int bYear) {
         this.firstName = firstName;
         this.surName = surName;

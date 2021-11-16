@@ -32,58 +32,48 @@ public class matriseregning {
 }
 
 
-public int getcolums(){
-    return colums;
+    public int getcolums(){
+        return colums;
 
 }
 
-public int getrows(){
-    return rows;
+    public int getrows(){
+        return rows;
 
 }
 
 
-public matriseregning addere(matriseregning matrix2){
-    int[][]mat3 = new int[colums][rows];
-    for (int i = 0; i < mat3.length;i++){
-        for (int j = 0; j < mat3[i].length; j++){
-            mat3[i][j] = matrix[i][j]+matrix2.matrix[i][j];
-        }
-    }
-    return new matriseregning(mat3);
-
-    
-
-}
-public matriseregning multiply(matriseregning matrix2){
-    int[][]mat3 = new int[colums][rows];
-    
-
-
-    int sum = 0;
-    for (int i = 0; i < this.matrix.length; i++){
-        for (int j = 0; j < matrix2.matrix[0].length; j++){
-            for (int x = 0; x < matrix2.matrix.length; x++){
-                sum = sum + matrix[i][x]*matrix2.matrix[x][j];
+    public matriseregning addere(matriseregning matrix2){
+        int[][]mat3 = new int[colums][rows];
+        for (int i = 0; i < mat3.length;i++){
+            for (int j = 0; j < mat3[i].length; j++){
+                mat3[i][j] = matrix[i][j]+matrix2.matrix[i][j];
             }
-           
-            mat3[i][j] = sum;
-            sum = 0;
         }
-    }  
-    return new matriseregning(mat3);
-}
-public matriseregning Transpose(){
-    int[][]mat3 = new int[colums][rows];
-    for (int i = 0; i < mat3.length; i++){
-        for (int j = 0; j < mat3[i].length; j++){
-            mat3[i][j] = matrix[j][i];
+        return new matriseregning(mat3);
+    }
+    public matriseregning multiply(matriseregning matrix2){
+        int[][]mat3 = new int[colums][rows];
+        int sum = 0;
+        for (int i = 0; i < this.matrix.length; i++){
+            for (int j = 0; j < matrix2.matrix[0].length; j++){
+                for (int x = 0; x < matrix2.matrix.length; x++){
+                    sum = sum + matrix[i][x]*matrix2.matrix[x][j];
+                }
+
+                mat3[i][j] = sum;
+                sum = 0;
+            }
         }
-}   return new matriseregning(mat3);
+        return new matriseregning(mat3);
+    }
 
-
-
-
-}
-
+    public matriseregning Transpose(){
+        int[][]mat3 = new int[colums][rows];
+        for (int i = 0; i < mat3.length; i++){
+            for (int j = 0; j < mat3[i].length; j++){
+                mat3[i][j] = matrix[j][i];
+            }
+        }return new matriseregning(mat3);
+    }
 }

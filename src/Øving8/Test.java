@@ -5,7 +5,6 @@ import java.util.Scanner;
 public class Test {
 
     public static void main(String[] args) {
-
         Scanner in = new Scanner(System.in);
 
         System.out.print("Type in first name: ");
@@ -60,8 +59,6 @@ public class Test {
                 System.out.println("You have to press either 1, 2, 3 or 0.");
             }
         }
-
-
     }
 }
 

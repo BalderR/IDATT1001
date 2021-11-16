@@ -63,9 +63,6 @@ public class Arrangement {
         return nummer == that.nummer;
     }
 
-
-
-
     @Override
     public String toString() {
         return "\nArrangement \n{" +
