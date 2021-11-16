@@ -1,5 +1,7 @@
 package Øving10.Oppg2;
 
+import java.util.Objects;
+
 /**
  * Klasse som inneholder retter
  */
@@ -37,6 +39,14 @@ public class Rett {
 
     public String getOppskrift() {
         return oppskrift;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Rett rett = (Rett) o;
+        return Double.compare(rett.pris, pris) == 0 && Objects.equals(navn, rett.navn) && Objects.equals(type, rett.type) && Objects.equals(oppskrift, rett.oppskrift);
     }
 
     @Override

@@ -82,7 +82,6 @@ public class Meny {
 
     public double getTotalpris() {return totalpris;}
 
-
     @Override
     public String toString() {
         StringBuilder str = new StringBuilder(this.retter.size());
