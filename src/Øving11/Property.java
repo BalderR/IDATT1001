@@ -27,26 +27,18 @@ public class Property {
     public Property(int municipalityNr, String municipalityName, int propertyNr,
                     int sectionNr, String name, double area, String nameOfowner) {
         this.municipalityNr = municipalityNr;
+        if (municipalityNr < 101 || municipalityNr > 5054) {
+            throw new IllegalArgumentException("Municipality nr must be between 101 and 5054");
+        }
         this.municipalityName = municipalityName;
         this.propertyNr = propertyNr;
         this.sectionNr = sectionNr;
         this.name = name;
         this.area = area;
+        if (area < 0) {
+            throw new IllegalArgumentException("Area must be positive");
+        }
         this.nameOfowner = nameOfowner;
-    }
-
-    public StringBuilder getPropertyID() {
-        StringBuilder str = new StringBuilder();
-        str.append(this.getMunicipalityNr()).append("-").append(this.getPropertyNr()).append("/").append(this.getSectionNr());
-        return str;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Property property = (Property) o;
-        return municipalityNr == property.municipalityNr && propertyNr == property.propertyNr && sectionNr == property.sectionNr;
     }
 
     public int getMunicipalityNr() {
@@ -91,7 +83,16 @@ public class Property {
 
     @Override
     public String toString() {
+        StringBuilder str = new StringBuilder();
+        str.append(this.getMunicipalityNr()).append("-").append(this.getPropertyNr()).append("/").append(this.getSectionNr());
+        return str.toString();
+    }
+
+    /*
+    @Override
+    public String toString() {
         return "Municipality Nr: " + municipalityNr + "\n Municipality Name: " + municipalityName + "\n Property nr: " + propertyNr
                 + "\n Section number: " + sectionNr + "\n Name: " + name + "\n Area: " + area + "\n Name of owner: " + nameOfowner + "\n";
     }
+     */
 }

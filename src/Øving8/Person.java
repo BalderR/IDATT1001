@@ -1,7 +1,5 @@
 package Øving8;
 
-import java.time.LocalDate;
-
 public class Person {
     private final String firstName;
     private final String surName;

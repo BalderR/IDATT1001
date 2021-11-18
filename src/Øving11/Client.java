@@ -1,7 +1,5 @@
 package Øving11;
 
-import Øving10.Oppg1.Arrangement;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -27,12 +25,14 @@ public class Client {
 
         try {
             while (true) {
-                System.out.println("Du kan velge mellom: \n" +
-                        "0. Avslutt \n" +
-                        "1. Register new property\n" +
+                System.out.println("Choose between: \n" +
+                        "0. Exit \n" +
+                        "1. Register new property \n" +
                         "2. Print all registered properties \n" +
-                        "3. Find property by municiplaity nr, property nr and section nr\n" +
-                        "4. Calculate average property area of all registered properties\n");
+                        "3. Find property by municiplaity nr, property nr and section nr \n" +
+                        "4. Calculate average property area of all registered properties \n" +
+                        "5. Find all properties with the same property nr \n" +
+                        "6. Delete a property");
                 int valg = s.nextInt();
                 switch (valg) {
                     case 0:
@@ -80,6 +80,25 @@ public class Client {
                         break;
                     case 4:
                         System.out.println(propertyRegistry.averageArea() + " square meters");
+                        break;
+                    case 5:
+                        System.out.println("Type in property nr");
+                        int propNr2 = s.nextInt();
+                        s.nextLine();
+                        System.out.println(propertyRegistry.allPropertiespropNr(propNr2));
+                        break;
+                    case 6:
+                        System.out.println("Type in municipality nr");
+                        int munNr1 = s.nextInt();
+                        s.nextLine();
+                        System.out.println("Type in property nr");
+                        int propNr1 = s.nextInt();
+                        s.nextLine();
+                        System.out.println("Type in section nr");
+                        int secNr1 = s.nextInt();
+                        s.nextLine();
+                        propertyRegistry.deleteProperty(munNr1, propNr1, secNr1);
+                        System.out.println("Property deleted");
                         break;
 
                     default:
