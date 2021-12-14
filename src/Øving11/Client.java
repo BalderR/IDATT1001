@@ -76,7 +76,6 @@ public class Client {
                         int secNr = s.nextInt();
                         s.nextLine();
                         System.out.println(propertyRegistry.findProperty(munNr, propNr, secNr));
-
                         break;
                     case 4:
                         System.out.println(propertyRegistry.averageArea() + " square meters");
@@ -100,7 +99,6 @@ public class Client {
                         propertyRegistry.deleteProperty(munNr1, propNr1, secNr1);
                         System.out.println("Property deleted");
                         break;
-
                     default:
                         System.out.println("You entered something wrong \n");
                         continue;
